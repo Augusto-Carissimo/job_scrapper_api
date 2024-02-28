@@ -24,7 +24,7 @@ class RubyOnRemoteJunior < Driver
       title = element.find_element(:class, 'text-lg').text
       company = element.find_element(:class, 'text-base').text
       link = element.find_element(:css, 'a').attribute('href')
-      website = 'rubyonremote.com/junior-remote-jobs'
+      website = 'https://rubyonremote.com'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

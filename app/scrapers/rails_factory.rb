@@ -23,7 +23,7 @@ class RailsFactory < Driver
       title = element.text.chomp("Apply Now")
       company = 'Factory Rails'
       link = element.find_element(:css, 'a.btn.btn-primary.apply-btn').attribute('href')
-      website = 'railsfactory.com'
+      website = 'https://railsfactory.com/'
       Position.create!(title:, company:, link:, website:) if Position.find_by(title:).nil?
     end
   end

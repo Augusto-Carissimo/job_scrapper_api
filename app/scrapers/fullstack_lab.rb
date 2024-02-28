@@ -24,7 +24,7 @@ class FullstackLab < Driver
       title = element.find_element(:css, 'h5').text
       company = 'Fullstack Labs'
       link = element.find_element(:css, 'a').attribute('href')
-      website = 'jobs.lever.co/fullstacklabs'
+      website = 'https://jobs.lever.co/fullstacklabs/'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

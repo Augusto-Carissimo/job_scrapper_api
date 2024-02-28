@@ -24,7 +24,7 @@ class WorkingNomand < Driver
       title = element.find_element(:css, 'h4').text
       company = element.find_element(:css, 'div.company.hidden-xs').text
       link = element.find_element(:css, 'h4').find_element(:css, 'a').attribute('href')
-      website = 'workingnomads.com'
+      website = 'https://www.workingnomads.com'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     rescue StandardError => e
       PositionController e.message

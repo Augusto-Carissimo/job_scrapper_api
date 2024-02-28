@@ -24,7 +24,7 @@ class Reinteractive < Driver
       title = element.text
       company = 'Reinteractive'
       link = 'https://reinteractive.com/careers'
-      website = 'reinteractive.com'
+      website = 'https://reinteractive.com'
       Position.create!(title:, company:, link:, website:) if Position.find_by(title:).nil?
     end
   end

@@ -21,7 +21,7 @@ class Ombulab < Driver
     title = 'New position in Ombulabs'
     company = 'Ombulabs'
     link = 'https://www.ombulabs.com/jobs'
-    website = 'ombulabs.com'
+    website = 'https://www.ombulabs.com'
     Position.create!(title:, company:, link:, website:)
   end
 end

@@ -23,7 +23,7 @@ class RailsGarage < Driver
       title = element.find_element(:css, 'h4.vacancies__item--title').text
       company = 'Rails Garage'
       link = element.find_element(:css, 'a.vacancies__item').attribute('href')
-      website = 'rubygarage.org'
+      website = 'https://rubygarage.org/'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

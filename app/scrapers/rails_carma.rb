@@ -22,7 +22,7 @@ class RailsCarma < Driver
       title = element.find_element(:css, 'h3.uael-infobox-title.elementor-inline-editing').text
       company = 'Rails Carma'
       link = element.find_element(:css, 'a.elementor-button-link.elementor-button.elementor-size-sm').attribute('href')
-      website = 'railscarma.com'
+      website = 'https://www.railscarma.com/'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end
