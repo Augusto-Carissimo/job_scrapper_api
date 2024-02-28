@@ -21,9 +21,9 @@ class RailsGarage < Driver
   def assign_values(elements)
     elements.each do |element|
       title = element.find_element(:css, 'h4.vacancies__item--title').text
-      company = 'RailsGarage'
+      company = 'Rails Garage'
       link = element.find_element(:css, 'a.vacancies__item').attribute('href')
-      website = 'RailsGarage'
+      website = 'rubygarage.org'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

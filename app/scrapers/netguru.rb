@@ -23,7 +23,7 @@ class Netguru < Driver
       title = element.find_element(:css, 'h2.job-preview__header.h4').text
       company = 'Netguru'
       link = element.find_element(:css, 'h2.job-preview__header.h4').find_element(:css, 'a').attribute('href')
-      website = 'Netguru'
+      website = 'netguru.com'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

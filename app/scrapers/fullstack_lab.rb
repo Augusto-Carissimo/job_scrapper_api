@@ -22,9 +22,9 @@ class FullstackLab < Driver
   def assign_values(elements)
     elements.each do |element|
       title = element.find_element(:css, 'h5').text
-      company = 'FullstackLabs'
+      company = 'Fullstack Labs'
       link = element.find_element(:css, 'a').attribute('href')
-      website = 'FullstackLabs'
+      website = 'jobs.lever.co/fullstacklabs'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     end
   end

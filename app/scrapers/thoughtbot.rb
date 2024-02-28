@@ -22,7 +22,7 @@ class Thoughtbot < Driver
     title = 'New position in Thoughtbot'
     company = 'Thoughtbot'
     link = 'https://thoughtbot.com/jobs#jobs'
-    website = 'REFACTOR SCRAPER TO SAVE CORRECT LINK'
+    website = 'thoughtbot.com'
     Position.create!(title:, company:, link:, website:)
   end
 end
