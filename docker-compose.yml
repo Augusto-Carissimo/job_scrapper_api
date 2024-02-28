@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  scrapper:
+    build: .
+    depends_on:
+      - selenium-server
+    environment:
+      SELENIUM_HOST: selenium-server
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+      - bundler-store:/usr/local/bundle
+    ports:
+      - 3001:3001
+
+  selenium-server:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - 4444:4444
+      - 5900:5900
+    volumes:
+      - /dev/shm:/dev/shm
+
+volumes:
+  bundler-store:
