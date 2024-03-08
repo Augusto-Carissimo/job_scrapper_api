@@ -15,6 +15,7 @@ gem 'redis', '~> 4.0'
 gem 'selenium-webdriver'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
