@@ -2,6 +2,7 @@
 
 require 'selenium-webdriver'
 require './config/environment'
+require 'dotenv'
 
 class Driver
   def initialize
@@ -12,7 +13,7 @@ class Driver
     options.add_argument('--disable-translate')
     @driver = Selenium::WebDriver.for(
       :remote,
-      url: "http://#{ENV['SELENIUM_HOST']}:4444/wd/hub",
+      url: ENV['SELENIUM_HOST'],
       options:
     )
     Rails.logger.info 'Driver initialized'
