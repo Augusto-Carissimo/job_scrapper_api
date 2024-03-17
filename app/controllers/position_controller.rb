@@ -1,20 +1,19 @@
 class PositionController < ApplicationController
   def index
-    @positions = positions
-    render json: @positions.to_json
+    @positions = Position.all.order('created_at ASC').reverse_order
+    render json: @positions.to_json, status: :ok
   end
 
   def scraper
+    delete_month_old
     Scraper.scrape
-    # if !positions.empty?
-    #   PositionMailer.update(positions).deliver_now
-    # end
-    redirect_to root_path
+    @status = true
+    render json: @status.to_json
   end
 
   private
 
-  def positions
-    Position.where('created_at > ?', 24.hours.ago).order('created_at ASC').reverse_order
+  def delete_month_old
+    Position.where('created_at < ?', 1.month.ago).delete_all
   end
 end
