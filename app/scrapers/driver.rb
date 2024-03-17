@@ -17,6 +17,8 @@ class Driver
       options:
     )
     Rails.logger.info 'Driver initialized'
+  rescue StandardError => e
+    Rails.logger.warn e.message
   end
 
   def quit
