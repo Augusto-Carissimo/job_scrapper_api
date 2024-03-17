@@ -18,11 +18,13 @@ class Driver
     )
     Rails.logger.info 'Driver initialized'
   rescue StandardError => e
-    Rails.logger.warn e.message
+    Rails.logger.warn "Error at driver initialization: #{e.message}"
   end
 
   def quit
     Rails.logger.info 'Closing Driver'
     @driver.quit
+  rescue StandardError => e
+    Rails.logger.warn "Error at driver quiting: #{e.message}"
   end
 end
