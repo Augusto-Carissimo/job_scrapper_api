@@ -14,6 +14,6 @@ class PositionController < ApplicationController
   private
 
   def delete_month_old
-    Position.where('created_at < ?', 1.month.ago).delete_all
+    Position.where('created_at < ?', 1.week.ago).delete_all
   end
 end
