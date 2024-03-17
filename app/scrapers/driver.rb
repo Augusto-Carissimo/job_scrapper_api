@@ -13,7 +13,7 @@ class Driver
     options.add_argument('--disable-translate')
     @driver = Selenium::WebDriver.for(
       :remote,
-      url: ENV['SELENIUM_HOST'],
+      url: Rails.application.credentials.render_selenium_host[:SELENIUM_HOST],
       options:
     )
     Rails.logger.info 'Driver initialized'
