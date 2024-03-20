@@ -5,7 +5,8 @@ class PositionController < ApplicationController
   end
 
   def scraper
-    delete_month_old
+    delete_old_positions
+    Rails.logger.info "Initializing scrapping"
     Scraper.scrape
     @status = true
     render json: @status.to_json
@@ -13,7 +14,9 @@ class PositionController < ApplicationController
 
   private
 
-  def delete_month_old
+  def delete_old_positions
     Position.where('created_at < ?', 1.week.ago).delete_all
+    Rails.logger.info "Deleting old positions"
+
   end
 end
