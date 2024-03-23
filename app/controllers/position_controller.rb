@@ -1,3 +1,9 @@
+require 'active_record'
+require 'uri'
+
+uri = URI.parse("postgres://zdttqmak:g8CXH-v1kOw84su3Cn01Oyhaj-SYwQIm@raja.db.elephantsql.com/zdttqmak")
+ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, username: uri.user, password: uri.password, database: uri.path.sub('/', ''))
+
 class PositionController < ApplicationController
   def index
     @positions = Position.all.order('created_at ASC').reverse_order
@@ -15,8 +21,7 @@ class PositionController < ApplicationController
   private
 
   def delete_old_positions
-    Position.where('created_at < ?', 1.week.ago).delete_all
+    Position.where('created_at < ?', 1.month.ago).delete_all
     Rails.logger.info "Deleting old positions"
-
   end
 end

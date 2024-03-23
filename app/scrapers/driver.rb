@@ -3,9 +3,14 @@
 require 'selenium-webdriver'
 require './config/environment'
 require 'dotenv'
+require 'active_record'
+require 'uri'
 
 class Driver
   def initialize
+    uri = URI.parse("postgres://zdttqmak:g8CXH-v1kOw84su3Cn01Oyhaj-SYwQIm@raja.db.elephantsql.com/zdttqmak")
+    ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, username: uri.user, password: uri.password, database: uri.path.sub('/', ''))
+
     Rails.logger.info 'Configuring Driver'
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
@@ -17,6 +22,7 @@ class Driver
       options:
     )
     Rails.logger.info 'Driver initialized'
+
   rescue StandardError => e
     Rails.logger.warn "Error at driver initialization: #{e.message}"
   end
