@@ -8,7 +8,7 @@ class Scraper
       .map {
         |file|
         basename = File.basename(file, File.extname(file)).classify.constantize
-        Rails.logger.info "Initializing #{basename} scraper"
+        Rails.logger.info "Setting up #{basename} scraper"
         basename.new.search
        }
   end

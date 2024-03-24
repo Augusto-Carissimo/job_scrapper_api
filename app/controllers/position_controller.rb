@@ -1,7 +1,7 @@
 require 'active_record'
 require 'uri'
 
-uri = URI.parse("postgres://zdttqmak:g8CXH-v1kOw84su3Cn01Oyhaj-SYwQIm@raja.db.elephantsql.com/zdttqmak")
+uri = URI.parse(Rails.application.credentials.elephant[:URL])
 ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, username: uri.user, password: uri.password, database: uri.path.sub('/', ''))
 
 class PositionController < ApplicationController
