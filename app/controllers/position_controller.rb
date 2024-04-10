@@ -18,6 +18,11 @@ class PositionController < ApplicationController
     render json: @status.to_json
   end
 
+  def test
+    @test = 'test'
+    render json: @test.to_json
+  end
+
   private
 
   def delete_old_positions
