@@ -19,9 +19,9 @@ class PositionController < ApplicationController
   end
 
   def test
-    p '--------------------'
-    p 'CRONJOB'
-    p '--------------------'
+    Rails.logger.info 'Walking up Selenium server'
+    Driver.new.quit
+    redirect_to root_path
   end
 
   private
