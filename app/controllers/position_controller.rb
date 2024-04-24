@@ -19,8 +19,9 @@ class PositionController < ApplicationController
   end
 
   def test
-    @test = 'test'
-    render json: @test.to_json
+    p '--------------------'
+    p 'CRONJOB'
+    p '--------------------'
   end
 
   private
