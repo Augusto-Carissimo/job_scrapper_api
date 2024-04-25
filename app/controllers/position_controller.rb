@@ -24,4 +24,9 @@ class PositionController < ApplicationController
     WakeUpSeleniumJob.perform_later
     render json: { message: 'Selenium script execution has been initiated.' }, status: :ok
   end
+
+  def test
+    @positions = Position.all.order('created_at ASC').reverse_order
+    render json: @positions.to_json, status: :ok
+  end
 end
