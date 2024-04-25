@@ -3,5 +3,6 @@ class WakeUpApiJob < ApplicationJob
 
   def perform
     Rails.logger.info 'Walking up API'
+    redirect_to root_path
   end
 end
