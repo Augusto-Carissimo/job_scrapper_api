@@ -11,23 +11,14 @@ class PositionController < ApplicationController
   end
 
   def scraper
-    delete_old_positions
-    Rails.logger.info "Initializing scrapping"
-    Scraper.scrape
-    @status = true
-    render json: @status.to_json
+    ScraperJob.perform_later
   end
 
-  def test
-    Rails.logger.info 'Walking up Selenium server'
-    Driver.new.quit
-    redirect_to root_path
+  def wake_up_api
+    WakeUpApiJob.perform_later
   end
 
-  private
-
-  def delete_old_positions
-    Position.where('created_at < ?', 1.month.ago).delete_all
-    Rails.logger.info "Deleting old positions"
+  def wake_up_selenium
+    WakeUpSeleniumJob.perform_later
   end
 end
