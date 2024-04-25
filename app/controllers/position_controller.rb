@@ -12,13 +12,16 @@ class PositionController < ApplicationController
 
   def scraper
     ScraperJob.perform_later
+    render json: { message: 'Scraper script execution has been initiated.' }, status: :ok
   end
 
   def wake_up_api
     WakeUpApiJob.perform_later
+    render json: { message: 'API script execution has been initiated.' }, status: :ok
   end
 
   def wake_up_selenium
     WakeUpSeleniumJob.perform_later
+    render json: { message: 'Selenium script execution has been initiated.' }, status: :ok
   end
 end
