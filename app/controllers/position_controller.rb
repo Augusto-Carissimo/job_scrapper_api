@@ -26,7 +26,6 @@ class PositionController < ApplicationController
   end
 
   def test
-    @positions = Position.all.order('created_at ASC').reverse_order
-    render json: @positions.to_json, status: :ok
+    render json: { message: 'test' }, status: :ok
   end
 end
