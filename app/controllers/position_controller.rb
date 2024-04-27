@@ -7,6 +7,7 @@ ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, u
 class PositionController < ApplicationController
   def index
     @positions = Position.all.order('created_at ASC').reverse_order
+    wake_up_selenium
     render json: @positions.to_json, status: :ok
   end
 
@@ -22,7 +23,9 @@ class PositionController < ApplicationController
 
   def wake_up_selenium
     WakeUpSeleniumJob.perform_later
-    render json: { message: 'Selenium script execution has been initiated.' }, status: :ok
+    sleep 60
+    scraper
+    # render json: { message: 'Selenium script execution has been initiated.' }, status: :ok
   end
 
   def test
