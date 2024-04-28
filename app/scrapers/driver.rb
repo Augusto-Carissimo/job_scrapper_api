@@ -17,6 +17,7 @@ class Driver
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-translate')
+    options.add_argument('--no-cache')
 
     http_client = Selenium::WebDriver::Remote::Http::Default.new
     http_client.read_timeout = 120
