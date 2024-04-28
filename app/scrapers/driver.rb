@@ -12,14 +12,20 @@ class Driver
     ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, username: uri.user, password: uri.password, database: uri.path.sub('/', ''))
 
     Rails.logger.info 'Configuring Driver'
+
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-translate')
+
+    http_client = Selenium::WebDriver::Remote::Http::Default.new
+    http_client.read_timeout = 120
+
     @driver = Selenium::WebDriver.for(
       :remote,
       url: Rails.application.credentials.render_selenium_host[:SELENIUM_HOST],
-      options:
+      options:,
+      http_client:
     )
     Rails.logger.info 'Driver initialized'
 
@@ -31,6 +37,6 @@ class Driver
     Rails.logger.info 'Closing Driver'
     @driver.quit
   rescue StandardError => e
-    Rails.logger.warn "Error at quiting driver: #{e.message}"
+    Rails.logger.warn "Error at quitingdriver: #{e.message}"
   end
 end
