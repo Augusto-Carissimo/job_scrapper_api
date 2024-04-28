@@ -3,7 +3,8 @@ class WakeUpSeleniumJob < ApplicationJob
 
   def perform
     Rails.logger.info 'Walking up Selenium server'
-    Driver.new.quit
+    driver = Driver.new
+    driver.quit
     redirect_to root_path
   end
 end
