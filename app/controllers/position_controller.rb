@@ -18,6 +18,7 @@ class PositionController < ApplicationController
   def wake_up_api
     WakeUpApiJob.perform_later
     render json: { message: 'API script execution has been initiated.' }, status: :ok
+    redirect_to root_path
   end
 
   def wake_up_selenium

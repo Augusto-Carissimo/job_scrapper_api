@@ -8,6 +8,5 @@ class WakeUpSeleniumJob < ApplicationJob
     Rails.logger.warn "Error trying to wake up Selenium: #{e.message}"
   ensure
     driver.quit
-    redirect_to root_path
   end
 end
