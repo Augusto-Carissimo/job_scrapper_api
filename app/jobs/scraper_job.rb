@@ -5,8 +5,6 @@ class ScraperJob < ApplicationJob
     delete_old_positions
     Rails.logger.info "Initializing scrapping"
     Scraper.scrape
-    @status = true
-    render json: @status.to_json
   end
 
   private
