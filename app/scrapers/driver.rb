@@ -38,6 +38,6 @@ class Driver
     Rails.logger.info 'Closing Driver'
     @driver.quit
   rescue StandardError => e
-    Rails.logger.warn "Error at quitingdriver: #{e.message}"
+    Rails.logger.warn "Error at quiting driver: #{e.message}"
   end
 end
