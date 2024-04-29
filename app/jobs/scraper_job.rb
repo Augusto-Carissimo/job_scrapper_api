@@ -4,17 +4,10 @@ class ScraperJob < ApplicationJob
 
   def perform
     wake_up_selenium
-    delete_old_positions
     scrape
   end
 
   private
-
-  def delete_old_positions
-    Rails.logger.info "Deleting old positions"
-    Position.where('created_at < ?', 1.month.ago).delete_all
-    Rails.logger.info "Old positions deleted"
-  end
 
   def wake_up_selenium
     Rails.logger.info 'Walking up Selenium server'
