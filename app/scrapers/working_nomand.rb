@@ -27,7 +27,7 @@ class WorkingNomand < Driver
       website = 'https://www.workingnomads.com'
       Position.create!(title:, company:, link:, website:) if Position.find_by(link:).nil?
     rescue StandardError => e
-      PositionController e.message
+      Rails.logger.warn e.message
     end
   end
 end
