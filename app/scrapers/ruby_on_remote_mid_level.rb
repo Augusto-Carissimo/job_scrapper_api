@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class RubyOnRemoteMidLevel < Driver
-  SEARCH_KEY = 'https://rubyonremote.com/mid-level-remote-jobs/'
+class RubyOnRemote < Driver
+  SEARCH_KEY = 'https://rubyonremote.com/'
 
   def search
-    Rails.logger.info 'Starting Ruby On Remote Mid Level search'
+    Rails.logger.info 'Starting Ruby On Remote search'
     @driver.navigate.to SEARCH_KEY
     elements = @driver.find_element(:css, 'main')
                       .find_elements(:css, 'ul')[1]
