@@ -1,6 +1,5 @@
 class ScraperJob < ApplicationJob
   queue_as :default
-  attr_accessor :job_finished
 
   def perform
     wake_up_selenium
