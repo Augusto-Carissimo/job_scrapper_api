@@ -14,7 +14,7 @@ class ScraperJob < ApplicationJob
     driver = Driver.new
   rescue StandardError => e
     Rails.logger.warn "Error trying to wake up Selenium: #{e.message}"
-    ensure
+  ensure
     driver.quit
   end
 
