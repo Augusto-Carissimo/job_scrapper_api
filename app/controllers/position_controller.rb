@@ -20,6 +20,13 @@ class PositionController < ApplicationController
 
   def wake_up_selenium
     WakeUpSeleniumJob.perform_later
+    render json: { message: 'Walking up Selenium' }, status: :ok
+  end
+
+  def scrape
+    Rails.logger.info "Initializing scrapping"
+    Scraper.scrape
+    Rails.logger.info "Scrapping finished"
   end
 
   private
