@@ -8,13 +8,17 @@ class PositionController < ApplicationController
   def index
     @positions = Position.all.order('created_at ASC').reverse_order
     # delete_old_positions
-    scraper_job = ScraperJob.set(wait: 2.minutes).perform_later
+    # scraper_job = ScraperJob.set(wait: 2.minutes).perform_later
     render json: @positions.to_json, status: :ok
     # poll_scraper_job_status(scraper_job)
   end
 
   def test
     render json: { message: 'test' }, status: :ok
+  end
+
+  def wake_up_selenium
+    WakeUpSeleniumJob.perform_later
   end
 
   private
