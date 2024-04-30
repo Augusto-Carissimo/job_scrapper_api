@@ -24,9 +24,8 @@ class PositionController < ApplicationController
   end
 
   def scrape
-    Rails.logger.info "Initializing scrapping"
-    Scraper.scrape
-    Rails.logger.info "Scrapping finished"
+    ScraperJob.set(wait: 2.minutes).perform_later
+    render json: { message: 'Scraping init' }, status: :ok
   end
 
   private
