@@ -23,7 +23,7 @@ class PositionController < ApplicationController
     render json: { message: 'Walking up Selenium' }, status: :ok
   end
 
-  def scrape
+  def scraper
     ScraperJob.set(wait: 2.minutes).perform_later
     render json: { message: 'Scraping init' }, status: :ok
   end
