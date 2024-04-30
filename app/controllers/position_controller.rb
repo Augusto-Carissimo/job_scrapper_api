@@ -9,7 +9,7 @@ class PositionController < ApplicationController
     @positions = Position.all.order('created_at ASC').reverse_order
 
     DeleteOldPositionsJob.set(wait: 2.minutes).perform_later
-    scraper_job = ScraperJob.set(wait: 2.minutes).perform_later
+    # scraper_job = ScraperJob.set(wait: 2.minutes).perform_later
     render json: @positions.to_json, status: :ok
     # poll_scraper_job_status(scraper_job)
   end
