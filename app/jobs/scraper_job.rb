@@ -20,5 +20,6 @@ class ScraperJob < ApplicationJob
   def scrape
     Rails.logger.info "Initializing scrapping"
     Scraper.scrape
+    Rails.logger.info "Scrapping finished"
   end
 end

@@ -30,15 +30,15 @@ class PositionController < ApplicationController
     Rails.logger.info "Old positions deleted"
   end
 
-  def poll_scraper_job_status(job)
-    loop do
-      if job.completed?
-        @status = true
-        render json: { status: @status }.to_json, status: :ok
-        break
-      else
-        sleep(60)
-      end
-    end
-  end
+  # def poll_scraper_job_status(job)
+  #   loop do
+  #     if job.completed?
+  #       @status = true
+  #       render json: { status: @status }.to_json, status: :ok
+  #       break
+  #     else
+  #       sleep(60)
+  #     end
+  #   end
+  # end
 end
