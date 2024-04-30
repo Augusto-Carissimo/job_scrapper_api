@@ -7,7 +7,7 @@ ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, u
 class PositionController < ApplicationController
   def index
     @positions = Position.all.order('created_at ASC').reverse_order
-    delete_old_positions
+    # delete_old_positions
     scraper_job = ScraperJob.perform_later
     render json: @positions.to_json, status: :ok
     # poll_scraper_job_status(scraper_job)
