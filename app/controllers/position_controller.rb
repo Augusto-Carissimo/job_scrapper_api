@@ -23,8 +23,10 @@ class PositionController < ApplicationController
     system("ruby #{script_path}")
     if $?.success?
       render json: { status: 'Script executed successfully' }, status: :ok
-    else
-      render json: { error: 'Failed to execute script' }, status: :internal_server_error
+  rescue => e
+    p e
+
+    render json: { error: 'Failed to execute script' }, status: :internal_server_error
     end
     # WakeUpSeleniumJob.perform_later
     # render json: { message: 'Walking up Selenium' }, status: :ok
