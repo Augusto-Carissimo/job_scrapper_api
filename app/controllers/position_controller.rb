@@ -19,8 +19,15 @@ class PositionController < ApplicationController
   end
 
   def wake_up_selenium
-    WakeUpSeleniumJob.perform_later
-    render json: { message: 'Walking up Selenium' }, status: :ok
+    script_path = Rails.root.join('lib', 'scripts', 'wake_up_selenium.rb')
+    system("ruby #{script_path}")
+    if $?.success?
+      render json: { status: 'Script executed successfully' }, status: :ok
+    else
+      render json: { error: 'Failed to execute script' }, status: :internal_server_error
+    end
+    # WakeUpSeleniumJob.perform_later
+    # render json: { message: 'Walking up Selenium' }, status: :ok
   end
 
   def scraper

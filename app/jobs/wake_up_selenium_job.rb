@@ -4,7 +4,6 @@ require 'uri'
 class WakeUpSeleniumJob < ApplicationJob
   queue_as :default
 
-
   def perform
     Rails.logger.info 'Walking up Selenium server'
     url = URI.parse('https://standalone-chrome-beta-2.onrender.com/ui/')
