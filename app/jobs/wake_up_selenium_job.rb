@@ -21,7 +21,7 @@ class WakeUpSeleniumJob < ApplicationJob
     end
 
     if response.code == '200'
-      Rails.logger.info 'Selenium server active'
+      Rails.logger.info "Selenium server active: #{response.code}"
     else
       Rails.logger.warn "Error trying to wake up Selenium: #{response.code} - #{response.message}"
     end
