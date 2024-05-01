@@ -13,6 +13,7 @@ class WakeUpSeleniumJob < ApplicationJob
     else
       Rails.logger.error 'Failed to wake up Selenium server'
     end
+  end
 end
 
 
