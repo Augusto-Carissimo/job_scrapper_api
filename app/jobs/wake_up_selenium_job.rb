@@ -4,10 +4,11 @@ require 'uri'
 class WakeUpSeleniumJob < ApplicationJob
   queue_as :default
 
+
   def perform
     Rails.logger.info 'Walking up Selenium server'
-
     url = URI.parse('https://standalone-chrome-beta-2.onrender.com/ui/')
+
     request = Net::HTTP::Get.new(url)
     host = url.host
     port = url.port
@@ -19,8 +20,17 @@ class WakeUpSeleniumJob < ApplicationJob
       http.request(request)
     end
 
-    Rails.logger.info 'Selenium server active'
+    if response.code == '200'
+      Rails.logger.info 'Selenium server active'
+    else
+      Rails.logger.warn "Error trying to wake up Selenium: #{response.code} - #{response.message}"
+    end
+
   rescue StandardError => e
     Rails.logger.warn "Error trying to wake up Selenium: #{e.message}"
   end
 end
+
+
+
+
