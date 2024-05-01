@@ -5,29 +5,14 @@ class WakeUpSeleniumJob < ApplicationJob
   queue_as :default
 
   def perform
-    Rails.logger.info 'Walking up Selenium server'
-    url = URI.parse('https://standalone-chrome-beta-2.onrender.com/ui/')
+    script_path = Rails.root.join('lib', 'scripts', 'wake_up_selenium.rb')
+    system("ruby #{script_path}")
 
-    request = Net::HTTP::Get.new(url)
-    host = url.host
-    port = url.port
-    use_ssl = (url.scheme == 'https')
-    open_timeout = 120
-    read_timeout = 150
-
-    response = Net::HTTP.start(host, port, use_ssl:, open_timeout:, read_timeout:) do |http|
-      http.request(request)
-    end
-
-    if response.code == '200'
-      Rails.logger.info "Selenium server active: #{response.code}"
+    if $?.success?
+      Rails.logger.info 'Selenium server woke up successfully'
     else
-      Rails.logger.warn "Error trying to wake up Selenium: #{response.code} - #{response.message}"
+      Rails.logger.error 'Failed to wake up Selenium server'
     end
-
-  rescue StandardError => e
-    Rails.logger.warn "Error trying to wake up Selenium: #{e.message}"
-  end
 end
 
 
