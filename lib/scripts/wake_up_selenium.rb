@@ -13,9 +13,12 @@ read_timeout = 150
 response = Net::HTTP.start(host, port, use_ssl:, open_timeout:, read_timeout:) do |http|
   http.request(request)
 end
-
+p response
 if response.code == '200'
-  puts "Response body: #{response.body}"
+  p "Server up"
 else
-  puts "Error: #{response.code} - #{response.message}"
+  p "Error: #{response.code} - #{response.message}"
 end
+
+rescue => e
+  p e

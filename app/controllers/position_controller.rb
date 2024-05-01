@@ -24,7 +24,6 @@ class PositionController < ApplicationController
     if $?.success?
       render json: { status: 'Script executed successfully' }, status: :ok
     else
-      p $?
       render json: { error: 'Failed to execute script' }, status: :internal_server_error
     end
     # WakeUpSeleniumJob.perform_later
