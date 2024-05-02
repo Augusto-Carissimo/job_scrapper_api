@@ -4,7 +4,11 @@ require './config/environment'
 
 class Scraper
   def self.scrape
-    Dir.entries('./app/scrapers').excluding('driver.rb', 'scraper.rb', '..', '.')
+    all_files = Dir.entries('./app/scrapers')
+    excluded_files = ['driver.rb', 'scraper.rb', '..', '.']
+    filtered_files = all_files.reject { |file| excluded_files.include?(file) }
+    shuffled_files = filtered_files.shuffle
+    shuffled_files
       .map {
         |file|
         basename = File.basename(file, File.extname(file)).classify.constantize
