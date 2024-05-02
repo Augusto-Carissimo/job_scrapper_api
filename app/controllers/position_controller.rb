@@ -15,6 +15,7 @@ class PositionController < ApplicationController
     Rails.logger.info "Initializing scrapping"
     Scraper.scrape
     Rails.logger.info "Scrapping finished"
+    render json: { message: 'Scrapping finished' }, status: :ok
   end
 
   def test
