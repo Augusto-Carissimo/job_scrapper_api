@@ -1,24 +1,15 @@
-# README
+Job Scraper for positions requiring Ruby on Rails and positions in companies with RoR base projects like FullStack Labs, Netguru, OmbuLabs, RailsCarma, RailsFactory, RubyGarage, reinteractive, thoughtbot.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Currently the app is scraping more than 10 sites and recovering, on average, 10 new positions per day making manual search unnecessary.
 
-Things you may want to cover:
+For this project I mounted a Selenium standalone Docker image to extract the data from the sites and develop a RoR API to manipulate it. Both services are running separately in Render.
 
-* Ruby version
+The frontend is a React app mounted in Netlify mostly written using ChatGPT.
 
-* System dependencies
+Every day the scraper is run to update the app with the latest positions on the sites using ElephantSQL for storage.
 
-* Configuration
+Taking into account that all the infrastructure is running on free tier services the cost to deploy and maintain the app is 0$.
 
-* Database creation
+In the future I will be adding more job sites and companies to the search.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Here is the link (it may take 50 seconds to show the results the first time you get in, it is what the Render server takes to spin-up): https://jobscrapperrubyonrails.netlify.app/
