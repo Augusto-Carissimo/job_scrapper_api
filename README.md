@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/837be51e-e89a-4d8f-8457-470d8b45ce27)
+
+[Walkthrough Video](https://www.linkedin.com/feed/update/urn:li:activity:7193672623833145345/)
+
 Job Scraper for positions requiring Ruby on Rails and positions in companies with RoR base projects like FullStack Labs, Netguru, OmbuLabs, RailsCarma, RailsFactory, RubyGarage, reinteractive, thoughtbot.
 
 Currently the app is scraping more than 10 sites and recovering, on average, 10 new positions per day making manual search unnecessary.
