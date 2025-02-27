@@ -8,7 +8,7 @@ class FullstackLab < Driver
     @driver.navigate.to SEARCH_KEY
     elements = @driver.find_element(:css, 'div.postings-group').find_elements(:css, 'div.posting')
     filter_elements = []
-    elements.filter_map { |element| filter_elements << element if element.text.downcase.include? 'ruby'}
+    elements.filter_map { |element| filter_elements << element if element.text.downcase.include? 'ruby' }
     assign_values(filter_elements)
     Rails.logger.info 'Search finished'
   rescue StandardError => e
