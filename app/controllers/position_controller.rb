@@ -1,7 +1,7 @@
 require 'active_record'
 require 'uri'
 
-uri = URI.parse(Rails.application.credentials.elephant[:URL])
+uri = URI.parse(Rails.application.credentials.aiven[:URL])
 ActiveRecord::Base.establish_connection(adapter: 'postgresql', host: uri.host, username: uri.user, password: uri.password, database: uri.path.sub('/', ''))
 
 class PositionController < ApplicationController
