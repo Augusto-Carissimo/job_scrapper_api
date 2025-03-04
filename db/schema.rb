@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_222539) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_29_220101) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "positions", force: :cascade do |t|
     t.string "title"
     t.string "company"
-    t.string "link"
+    t.string "link", null: false
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
