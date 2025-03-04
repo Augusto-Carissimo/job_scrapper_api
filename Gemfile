@@ -8,7 +8,6 @@ ruby '3.2.2'
 gem 'bootsnap', require: false
 gem 'importmap-rails'
 gem 'jbuilder'
-gem 'sqlite3'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.8'
